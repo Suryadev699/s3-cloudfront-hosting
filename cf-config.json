@@ -1,0 +1,47 @@
+```json
+{
+  "CallerReference": "unique-reference-001",
+  "Comment": "Secure CloudFront distribution with OAC",
+  "Enabled": true,
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "S3Origin",
+        "DomainName": "your-unique-bucket-name.s3.us-east-1.amazonaws.com",
+        "OriginAccessControlId": "<your-oac-id>",
+        "S3OriginConfig": {
+          "OriginAccessIdentity": ""
+        }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "S3Origin",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": {
+      "Quantity": 2,
+      "Items": ["GET", "HEAD"],
+      "CachedMethods": {
+        "Quantity": 2,
+        "Items": ["GET", "HEAD"]
+      }
+    },
+    "TrustedSigners": {
+      "Enabled": false,
+      "Quantity": 0
+    },
+    "ForwardedValues": {
+      "QueryString": false,
+      "Cookies": {
+        "Forward": "none"
+      }
+    },
+    "MinTTL": 0
+  },
+  "DefaultRootObject": "index.html",
+  "ViewerCertificate": {
+    "CloudFrontDefaultCertificate": true
+  }
+}
+```
