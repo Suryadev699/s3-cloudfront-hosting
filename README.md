@@ -81,7 +81,7 @@ aws cloudfront create-origin-access-control \
   }'
 ```
 
-Copy the returned `Id` for later.
+Copy the returned `Id` add it in the cloud front config file.
 
 ---
 
